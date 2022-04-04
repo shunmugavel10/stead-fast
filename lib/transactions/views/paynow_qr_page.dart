@@ -1,0 +1,343 @@
+import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:steadfast/common/component/textFormField.dart';
+
+class PaynowQrPage extends StatefulWidget {
+  PaynowQrPage({Key? key}) : super(key: key);
+
+  @override
+  _PaynowQrPageState createState() => _PaynowQrPageState();
+}
+
+class _PaynowQrPageState extends State<PaynowQrPage> {
+ 
+  double _width = 414.w;
+  double _height = 52.h;
+  bool isExpanded = false;
+  
+  final transactionController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 2,
+        leading:
+            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new)),
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
+        centerTitle: true,
+        title: Text(
+          "PayNow via QR Code",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                  child: Image(
+                image: AssetImage(
+                  "assets/images/profile_page/paynow_page.png",
+                ),
+                height: 252.h,
+                width: 216.w,
+              )),
+              // SizedBox(height: 15.h,),
+              Padding(
+                padding: const EdgeInsets.only(left: 70),
+                child: Row(
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.share_outlined,
+                          color: Theme.of(context).colorScheme.onSecondary,
+                          size: 18.h,
+                        )),
+                    Text("Share",
+                        style: Theme.of(context).textTheme.caption!.copyWith(
+                            color: Theme.of(context).colorScheme.onSecondary)),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.file_download_outlined,
+                            color: Theme.of(context).colorScheme.onSecondary,
+                            size: 18.h,
+                          )),
+                    ),
+                    Text("Download QR Code",
+                        style: Theme.of(context).textTheme.caption!.copyWith(
+                            color: Theme.of(context).colorScheme.onSecondary)),
+                  ],
+                ),
+              ),
+              AnimatedContainer(
+                duration: const Duration(seconds: 1),
+                width: _width,
+                height: isExpanded ? 228.h : 52.h,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Theme.of(context).colorScheme.onSecondary),
+                    borderRadius: BorderRadius.circular(5)),
+                child: isExpanded
+                    ? SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 15,),
+                          child: Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Follow the instructions",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle2!
+                                        .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary),
+                                  ),
+                                  IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          isExpanded = isExpanded ? false : true;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_sharp,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                
+                                children: [
+                                  Text(
+                                    "1",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                         .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Text(
+                                      "Save this QR code to your photos",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle2!
+                                          .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSecondary),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                               SizedBox(height: 8.h,),
+                              Divider(height: 1.h,),
+                               SizedBox(height: 10.h,),
+                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                
+                                children: [
+                                  Text(
+                                    "2",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                         .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Text(
+                                      "Launch your banking app and tap Scan & Pay",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle2!
+                                          .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSecondary),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                               SizedBox(height: 10.h,),
+                              Divider(height: 1.h,),
+                               SizedBox(height: 5.h,),
+                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                
+                                children: [
+                                  Text(
+                                    "3",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                         .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Text(
+                                      "Upload the QR code & enter your \ntop-up amount",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle2!
+                                          .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSecondary),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 5.h,),
+                              Divider(height: 1.h,),
+                               SizedBox(height: 8.h,),
+                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                
+                                children: [
+                                  Text(
+                                    "4",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                         .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Text(
+                                      "Tap PayNow to complete the transaction",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle2!
+                                          .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSecondary),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    : 
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15,),
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Follow the instructions",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isExpanded = isExpanded ? false : true;
+                                  });
+                                },
+                                icon: Icon(
+                                  Icons.keyboard_arrow_down_sharp,
+                                  color: Theme.of(context).colorScheme.onPrimary,
+                                )),
+                          ],
+                        ),
+                    ),
+              ),
+             SizedBox(height: 15.h,),
+              Text("Transaction Number",
+                  style: Theme.of(context).textTheme.subtitle2),
+              SizedBox(
+                height: 15.h,
+              ),
+              textFormField(context, "Enter Transaction No.", "error",
+                  transactionController),
+              SizedBox(
+                height: 15.h,
+              ),
+              Text("Upload Receipt",
+                  style: Theme.of(context).textTheme.subtitle2),
+              SizedBox(
+                height: 15.h,
+              ),
+              DottedBorder(
+                child: Container(
+                  height: 80.h,
+                  width: 80.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.file_upload_outlined,
+                          color: Theme.of(context).colorScheme.onSecondary,
+                        )),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 100.h,
+              ),
+              FlatButton(
+                child: Text(
+                  "Submit",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5!
+                      .copyWith(color: Colors.white),
+                ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    side: BorderSide(color: Theme.of(context).primaryColor)),
+                minWidth: MediaQuery.of(context).size.width,
+                height: (48).h,
+                color: Theme.of(context).primaryColor,
+                onPressed: () {
+                  Modular.to.pushNamed('/paynowUenPage');
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
